@@ -10,7 +10,7 @@ var app = express();
 var port = process.env.port || 8080;
 
 // View Engine
-app.set('view', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
 
