@@ -18,12 +18,22 @@ var TaskService = (function () {
     }
     TaskService.prototype.getTasks = function () {
         // todo - port needs to be dynamic 
-        return this.http.get('http://localhost:8080/api/tasks').map(function (res) { return res.json(); });
+        return this.http.get('/api/tasks').map(function (res) { return res.json(); });
     };
     TaskService.prototype.addTask = function (newTask) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('http://localhost:8080/api/task', JSON.stringify(newTask), { headers: headers })
+        return this.http.post('/api/task', JSON.stringify(newTask), { headers: headers })
+            .map(function (res) { return res.json(); });
+    };
+    TaskService.prototype.deleteTask = function (id) {
+        return this.http.delete('/api/task/' + id)
+            .map(function (res) { return res.json(); });
+    };
+    TaskService.prototype.updateStatus = function (task) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put('/api/task/' + task._id, JSON.stringify(task), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return TaskService;
