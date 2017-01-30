@@ -27,7 +27,7 @@ var TasksComponent = (function () {
         };
         this.taskService.addTask(newTask)
             .subscribe(function (task) {
-            _this.tasks.push();
+            _this.tasks.push(task);
             _this.title = '';
         });
     };
@@ -50,7 +50,7 @@ var TasksComponent = (function () {
             isDone: !task.isDone
         };
         this.taskService.updateStatus(_task).subscribe(function (data) {
-            task.isDone = !task.isDone;
+            _task.isDone = !_task.isDone;
         });
     };
     return TasksComponent;

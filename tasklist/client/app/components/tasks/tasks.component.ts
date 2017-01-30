@@ -31,7 +31,7 @@ export class TasksComponent
 
         this.taskService.addTask(newTask)
             .subscribe(task => {
-                this.tasks.push();
+                this.tasks.push(task);
                 this.title = '';
             })
     }
@@ -65,7 +65,7 @@ export class TasksComponent
         };
 
         this.taskService.updateStatus(_task).subscribe(data => {
-            task.isDone = !task.isDone;
+            _task.isDone = !_task.isDone;
         });
     }
 }
